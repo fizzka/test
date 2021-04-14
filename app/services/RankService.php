@@ -38,7 +38,7 @@ class RankService
         // Parse json
         $data = json_decode($rawData, true);
 
-        // Check parsed (also will check that $data is a proper json)
+        // Check parsed (also will check that $rawData is a proper json)
         if(!is_array($data)) {
             throw new Exception("Result from point isn't a proper array");
         }
