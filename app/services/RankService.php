@@ -20,24 +20,25 @@ class RankService
     }
 
     /**
-     * @param string $url
-     * @return array
+     * Loads teams list by URL and performs ranking
+     * @param string $url URL of point to get teams list
+     * @return array Teams ordered and ranked
      * @throws Exception
      */
     public function getRankedList(string $url): array
     {
-        # Load data
+        // Load data
         $rawData = $this->urlLoader->loadUrl($url);
 
-        # Check
+        // Check
         if(empty($rawData)) {
             throw new Exception("Target url($url) return empty result");
         }
 
-        # Parse json
+        // Parse json
         $data = json_decode($rawData, true);
 
-        # Check parsed
+        // Check parsed
         if(!is_array($data)) {
             throw new Exception("Result from point isn't a proper array");
         }
@@ -46,12 +47,13 @@ class RankService
     }
 
     /**
+     * Reorders and ranks teams
      * @param array $teams
      * @return array
      */
     protected function setTeamsRanks(array $teams): array
     {
-        # Order teams by score
+        // Order teams by score
         usort($teams, function($firstTeam, $secondTeam) {
             return $secondTeam['scores'] <=> $firstTeam['scores'];
         });
@@ -59,7 +61,7 @@ class RankService
         $currentRank = $lastRank = 1;
         $lastScore = 0;
 
-        # Go through teams and set ranks
+        // Go through teams and set ranks
         foreach($teams as &$team) {
             if($team['scores'] < $lastScore)
             {

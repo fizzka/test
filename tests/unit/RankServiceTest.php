@@ -56,7 +56,7 @@ class RankServiceTest extends TestCase
     /**
      * @throws Exception
      */
-    public function testGetRankedListBadData()
+    public function testGetRankedListBadFormat()
     {
         // Add mock result
         $this->mock->method('loadUrl')->willReturn('{ "bad json');
