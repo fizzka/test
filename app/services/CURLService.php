@@ -41,7 +41,7 @@ class CURLService implements URLLoader
             $errorCode = curl_errno($curl);
 
             if(CURLE_COULDNT_RESOLVE_HOST === $errorCode)
-                throw new Exception("Can't resolve server '$url'.");
+                throw new Exception("Can't resolve server by url('$url')");
 
             if(CURLE_COULDNT_CONNECT === $errorCode)
                 throw new Exception("Server '$url' is inactive.");
@@ -50,7 +50,7 @@ class CURLService implements URLLoader
                 throw new Exception("URI('$url') has wrong format.");
 
             // Unknown error
-            throw new Exception("CURL error(#" . ($code = $errorCode) . ") on url($url)");
+            throw new Exception("CURL error(#$errorCode) on url('$url')");
 
         }
 

@@ -9,7 +9,9 @@ docker-compose exec php-fpm composer exec phpunit tests/unit/RankServiceTest.php
 
 Возможные улучшения
 ============================
-Можно в RankService добавить валидацию данных команд
+Можно в RankService добавить валидацию данных команд(поля, отрицательные очки и все такое)
+
+Можно сделать специальные DTO для данных
 
 CURLService добавлен для примера реализации URLLoader
 
