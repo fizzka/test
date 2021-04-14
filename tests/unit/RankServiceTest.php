@@ -26,6 +26,7 @@ class RankServiceTest extends TestCase
     }
 
     /**
+     * Checks that service works correct on proper data
      * @throws Exception
      */
     public function testGetRankedList()
@@ -54,12 +55,29 @@ class RankServiceTest extends TestCase
     }
 
     /**
+     * Checks that service throws exception on malformed response from point
      * @throws Exception
      */
     public function testGetRankedListBadFormat()
     {
         // Add mock result
         $this->mock->method('loadUrl')->willReturn('{ "bad json');
+
+        // Expect error with exception
+        $this->expectException(Exception::class);
+
+        // Perform ranking
+        $this->rankService->getRankedList('http://no-sense-with-mock');
+    }
+
+    /**
+     * Checks that service throws exception on empty response from point
+     * @throws Exception
+     */
+    public function testGetRankedListEmptyData()
+    {
+        // Add mock result
+        $this->mock->method('loadUrl')->willReturn('');
 
         // Expect error with exception
         $this->expectException(Exception::class);
