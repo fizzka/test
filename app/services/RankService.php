@@ -32,13 +32,13 @@ class RankService
 
         // Check
         if(empty($rawData)) {
-            throw new Exception("Target url($url) return empty result");
+            throw new Exception("Target url('$url') return empty result");
         }
 
         // Parse json
         $data = json_decode($rawData, true);
 
-        // Check parsed
+        // Check parsed (also will check that $data is a proper json)
         if(!is_array($data)) {
             throw new Exception("Result from point isn't a proper array");
         }
