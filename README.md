@@ -1,6 +1,6 @@
 Тестовое задание
 ============================
-Функция getRankedList в классе RankService реализует необходимую логику
+Функция getRankedList в классе App\Services\RankService реализует необходимую логику
 
 Для запуска тестов через docker-compose:
 ~~~
